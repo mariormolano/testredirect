@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <script type="application/javascript">
+    const enableredirect = true;
+    //const enableredirect = false;
+    async function locationIp(ip) {
+      const contry = await fetch("https://api.country.is");
+      if (enableredirect) {
+        if (contry.ok) {
+          const dataip = await contry.json();
+          console.table(dataip);
+          if (dataip.country == "US" || dataip.country == "CA") {
+            window.location.href = "https://windmar.com/fl/why-windmar/";
+            window.location.replace("https://windmar.com/fl/why-windmar/");
+          } else {
+            window.location.href = "https://windmar.com/pr/por-que-windmar/";
+            window.location.replace("https://windmar.com/pr/por-que-windmar/");
+          }
+        } else {
+          window.location.href = "https://windmar.com/pr/por-que-windmar/";
+          window.location.replace("https://windmar.com/pr/por-que-windmar/");
+        }
+      }
+    }
+    locationIp();
+  </script>
+</html>
